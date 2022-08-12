@@ -15,14 +15,14 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "btn_2",
-            "X": 63,
+            "Name": "btn_1",
+            "X": 10,
             "Y": 104,
             "Width": 60,
             "Height": 60,
             "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
             "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-            "TextId": "__SingleUse_UTRJ",
+            "TextId": "__SingleUse_BCIC",
             "ReleasedColor": {
               "Red": 255,
               "Green": 255,
@@ -38,14 +38,14 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "btn_1",
-            "X": 10,
+            "Name": "btn_2",
+            "X": 63,
             "Y": 104,
             "Width": 60,
             "Height": 60,
             "Pressed": "__designer\\Blue_Buttons_Round_Edge_icon_button_pressed.png",
             "Released": "__designer\\Blue_Buttons_Round_Edge_icon_button.png",
-            "TextId": "__SingleUse_BCIC",
+            "TextId": "__SingleUse_UTRJ",
             "ReleasedColor": {
               "Red": 255,
               "Green": 255,
@@ -481,7 +481,12 @@
             "Width": 213,
             "Height": 24,
             "TextId": "__SingleUse_CSR7",
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_7K8A",
+              "UseBuffer": true,
+              "BufferSize": 20
+            }
           },
           {
             "Type": "TextArea",
@@ -491,10 +496,28 @@
             "Width": 213,
             "Height": 24,
             "TextId": "__SingleUse_D1DZ",
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_5C5K",
+              "UseBuffer": true,
+              "BufferSize": 20
+            }
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btn_1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function1"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],

@@ -6,11 +6,17 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_D1DZ" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_5C5K" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">225</Translation>
       </Text>
+      <Text Id="__SingleUse_7K8A" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">15^2</Translation>
+      </Text>
+      <Text Id="__SingleUse_D1DZ" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_CSR7" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">15^2=</Translation>
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_7N7K" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">!</Translation>
