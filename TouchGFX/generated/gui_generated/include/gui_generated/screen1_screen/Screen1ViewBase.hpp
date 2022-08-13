@@ -10,7 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ScalableImage.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
@@ -19,6 +19,11 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase() {}
     virtual void setupScreen();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void updateExpression(char c);
 
 protected:
     FrontendApplication& application() {
@@ -30,8 +35,8 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::ScalableImage scalableImage1;
-    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_2;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_1;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_2;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_3;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_4;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_5;
@@ -50,11 +55,40 @@ protected:
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_cos;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_exp;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btn_fact;
-    touchgfx::TextArea textArea1;
-    touchgfx::TextArea textArea2;
+    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::TextAreaWithOneWildcard textArea2;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREA1_SIZE = 17;
+    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+    static const uint16_t TEXTAREA2_SIZE = 17;
+    touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
 
 private:
 
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    /*
+     * Computing function
+     */
+    long long pow(long long a, long long b);
+    long long fact(long long a);
+
+private:
+    int expressionLen = 0;
+    int pos = -1, hasResult;
+    long long imm[2], result;
+    float fResult;
+    char sign;
 };
 
 #endif // SCREEN1VIEWBASE_HPP

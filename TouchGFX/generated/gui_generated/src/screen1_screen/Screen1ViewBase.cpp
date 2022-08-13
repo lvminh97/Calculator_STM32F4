@@ -5,8 +5,10 @@
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include <math.h>
 
-Screen1ViewBase::Screen1ViewBase()
+Screen1ViewBase::Screen1ViewBase() :
+    buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 240, 320);
@@ -16,140 +18,164 @@ Screen1ViewBase::Screen1ViewBase()
     scalableImage1.setPosition(0, 0, 240, 320);
     scalableImage1.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
 
-    btn_2.setXY(63, 104);
-    btn_2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
-    btn_2.setLabelText(touchgfx::TypedText(T___SINGLEUSE_UTRJ));
-    btn_2.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    btn_2.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-
     btn_1.setXY(10, 104);
     btn_1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_1.setLabelText(touchgfx::TypedText(T___SINGLEUSE_BCIC));
     btn_1.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_1.setAction(buttonCallback);
+
+    btn_2.setXY(63, 104);
+    btn_2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    btn_2.setLabelText(touchgfx::TypedText(T___SINGLEUSE_UTRJ));
+    btn_2.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_2.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_2.setAction(buttonCallback);
 
     btn_3.setXY(116, 104);
     btn_3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_3.setLabelText(touchgfx::TypedText(T___SINGLEUSE_JOO7));
     btn_3.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_3.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_3.setAction(buttonCallback);
 
     btn_4.setXY(10, 157);
     btn_4.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_4.setLabelText(touchgfx::TypedText(T___SINGLEUSE_E0ZV));
     btn_4.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_4.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_4.setAction(buttonCallback);
 
     btn_5.setXY(63, 157);
     btn_5.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_5.setLabelText(touchgfx::TypedText(T___SINGLEUSE_8TQX));
     btn_5.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_5.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_5.setAction(buttonCallback);
 
     btn_6.setXY(116, 157);
     btn_6.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_6.setLabelText(touchgfx::TypedText(T___SINGLEUSE_TR77));
     btn_6.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_6.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_6.setAction(buttonCallback);
 
     btn_7.setXY(10, 210);
     btn_7.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_7.setLabelText(touchgfx::TypedText(T___SINGLEUSE_VG85));
     btn_7.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_7.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_7.setAction(buttonCallback);
 
     btn_8.setXY(63, 210);
     btn_8.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_8.setLabelText(touchgfx::TypedText(T___SINGLEUSE_S4Q9));
     btn_8.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_8.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_8.setAction(buttonCallback);
 
     btn_9.setXY(116, 210);
     btn_9.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_9.setLabelText(touchgfx::TypedText(T___SINGLEUSE_Q2GK));
     btn_9.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_9.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_9.setAction(buttonCallback);
 
     btn_0.setXY(63, 263);
     btn_0.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_0.setLabelText(touchgfx::TypedText(T___SINGLEUSE_AKH7));
     btn_0.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_0.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_0.setAction(buttonCallback);
 
     btn_equal.setXY(116, 263);
     btn_equal.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_equal.setLabelText(touchgfx::TypedText(T___SINGLEUSE_NUUT));
     btn_equal.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_equal.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_equal.setAction(buttonCallback);
 
     btn_ce.setXY(10, 263);
     btn_ce.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_ce.setLabelText(touchgfx::TypedText(T___SINGLEUSE_9KEP));
     btn_ce.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_ce.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_ce.setAction(buttonCallback);
 
     btn_plus.setXY(169, 104);
     btn_plus.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_plus.setLabelText(touchgfx::TypedText(T___SINGLEUSE_OV0Y));
     btn_plus.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_plus.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_plus.setAction(buttonCallback);
 
     btn_sub.setXY(169, 157);
     btn_sub.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_sub.setLabelText(touchgfx::TypedText(T___SINGLEUSE_60DU));
     btn_sub.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_sub.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_sub.setAction(buttonCallback);
 
     btn_mul.setXY(169, 210);
     btn_mul.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_mul.setLabelText(touchgfx::TypedText(T___SINGLEUSE_FKRN));
     btn_mul.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_mul.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_mul.setAction(buttonCallback);
 
     btn_div.setXY(169, 263);
     btn_div.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_div.setLabelText(touchgfx::TypedText(T___SINGLEUSE_UV1O));
     btn_div.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_div.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_div.setAction(buttonCallback);
 
     btn_sin.setXY(10, 51);
     btn_sin.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_sin.setLabelText(touchgfx::TypedText(T___SINGLEUSE_8OQM));
     btn_sin.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_sin.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_sin.setAction(buttonCallback);
 
     btn_cos.setXY(63, 51);
     btn_cos.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_cos.setLabelText(touchgfx::TypedText(T___SINGLEUSE_TPVX));
     btn_cos.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_cos.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_cos.setAction(buttonCallback);
 
     btn_exp.setXY(116, 51);
     btn_exp.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_exp.setLabelText(touchgfx::TypedText(T___SINGLEUSE_LTK8));
     btn_exp.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_exp.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_exp.setAction(buttonCallback);
 
     btn_fact.setXY(169, 51);
     btn_fact.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     btn_fact.setLabelText(touchgfx::TypedText(T___SINGLEUSE_7N7K));
     btn_fact.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btn_fact.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btn_fact.setAction(buttonCallback);
 
     textArea1.setPosition(16, 3, 213, 24);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea1.setLinespacing(0);
+    Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_7K8A).getText());
+    textArea1.setWildcard(textArea1Buffer);
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CSR7));
 
     textArea2.setPosition(16, 27, 213, 24);
     textArea2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea2.setLinespacing(0);
+    Unicode::snprintf(textArea2Buffer, TEXTAREA2_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_5C5K).getText());
+    textArea2.setWildcard(textArea2Buffer);
     textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_D1DZ));
 
     add(__background);
     add(scalableImage1);
-    add(btn_2);
     add(btn_1);
+    add(btn_2);
     add(btn_3);
     add(btn_4);
     add(btn_5);
@@ -175,4 +201,230 @@ Screen1ViewBase::Screen1ViewBase()
 void Screen1ViewBase::setupScreen()
 {
 
+}
+
+void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+	float rad;
+
+    if (&src == &btn_1)
+    {
+    	updateExpression('1');
+    }
+    else if (&src == &btn_2)
+	{
+		updateExpression('2');
+	}
+    else if (&src == &btn_3)
+	{
+		updateExpression('3');
+	}
+    else if (&src == &btn_4)
+    {
+		updateExpression('4');
+	}
+    else if (&src == &btn_5)
+	{
+		updateExpression('5');
+	}
+    else if (&src == &btn_6)
+	{
+		updateExpression('6');
+	}
+    else if (&src == &btn_7)
+	{
+		updateExpression('7');
+	}
+    else if (&src == &btn_8)
+	{
+		updateExpression('8');
+	}
+    else if (&src == &btn_9)
+	{
+		updateExpression('9');
+	}
+    else if (&src == &btn_0)
+	{
+		updateExpression('0');
+	}
+    else if (&src == &btn_ce)
+    {
+    	expressionLen = 0;
+    	textArea1Buffer[expressionLen] = 0;
+    	textArea1.invalidate();
+    	textArea2Buffer[0] = '0';
+    	textArea2Buffer[1] = 0;
+    	textArea2.invalidate();
+    	imm[0] = imm[1] = 0;
+    }
+    else if (&src == &btn_plus)
+    {
+    	updateExpression('+');
+    	sign = '+';
+    	pos = 1;
+    }
+    else if (&src == &btn_sub)
+    {
+    	updateExpression('-');
+    	sign = '-';
+    	pos = 1;
+    }
+    else if (&src == &btn_mul)
+	{
+		updateExpression('x');
+		sign = 'x';
+		pos = 1;
+	}
+    else if (&src == &btn_div)
+	{
+		updateExpression('/');
+		sign = '/';
+		pos = 1;
+	}
+    else if (&src == &btn_sin)
+    {
+    	updateExpression('s');
+    	updateExpression('i');
+    	updateExpression('n');
+    	updateExpression('(');
+    	sign = 's';
+    	pos = 0;
+    }
+    else if (&src == &btn_cos)
+	{
+		updateExpression('c');
+		updateExpression('o');
+		updateExpression('s');
+		updateExpression('(');
+		sign = 'c';
+		pos = 0;
+	}
+    else if (&src == &btn_exp)
+    {
+    	updateExpression('^');
+    	sign = '^';
+    	pos = 1;
+    }
+    else if (&src == &btn_fact)
+    {
+    	updateExpression('!');
+    	sign = '!';
+    }
+    else if (&src == &btn_equal)
+    {
+    	if(pos == 0)
+    	{
+    		switch(sign)
+			{
+			case 's':
+				updateExpression(']');
+				rad = imm[0] / 180.0 * 3.14159;
+				fResult = sin(rad);
+				hasResult = 2;
+				break;
+			case 'c':
+				updateExpression(']');
+				rad = imm[0] / 180.0 * 3.14159;
+				fResult = cos(rad);
+				hasResult = 2;
+				break;
+			case '!':
+				result = fact(imm[0]);
+				hasResult = 1;
+				break;
+			default:
+				hasResult = 0;
+			}
+    	}
+    	else if(pos == 1)
+    	{
+    		switch(sign)
+			{
+			case '+':
+				result = imm[0] + imm[1];
+				hasResult = 1;
+				break;
+			case '-':
+				result = imm[0] - imm[1];
+				hasResult = 1;
+				break;
+			case 'x':
+				result = imm[0] * imm[1];
+				hasResult = 1;
+				break;
+			case '/':
+				result = imm[0] / imm[1];
+				hasResult = 1;
+				break;
+			case '^':
+				result = pow(imm[0], imm[1]);
+				hasResult = 1;
+				break;
+			default:
+				hasResult = 0;
+			}
+    	}
+    	else
+    		hasResult = 0;
+
+    	if(hasResult)
+    	{
+    		if(hasResult == 1)
+    			Unicode::itoa(result, textArea2Buffer, TEXTAREA2_SIZE, 10);
+    		else if(hasResult == 2)
+    			Unicode::snprintfFloat(textArea2Buffer, TEXTAREA2_SIZE, "%7.5f", fResult);
+    		textArea2.invalidate();
+    		pos = -1;
+    		imm[0] = imm[1] = 0;
+    		sign = '\0';
+    	}
+    }
+
+}
+
+void Screen1ViewBase::updateExpression(char c)
+{
+	if(hasResult)
+	{
+		expressionLen = 0;
+		textArea1Buffer[expressionLen] = 0;
+		textArea1.invalidate();
+		textArea2Buffer[0] = '0';
+		textArea2Buffer[1] = 0;
+		textArea2.invalidate();
+		hasResult = 0;
+	}
+	if(expressionLen < TEXTAREA1_SIZE)
+	{
+		textArea1Buffer[expressionLen++] = c;
+		textArea1Buffer[expressionLen] = 0;
+		textArea1.invalidate();
+		if('0' <= c && c <= '9')
+		{
+			if(pos == -1)
+				pos = 0;
+
+			imm[pos] = imm[pos] * 10 + c - '0';
+		}
+	}
+}
+
+long long Screen1ViewBase::pow(long long a, long long b)
+{
+	long long res = 1;
+	for(long long i = 1; i <= b; i++)
+	{
+		res *= a;
+	}
+	return res;
+}
+
+long long Screen1ViewBase::fact(long long a)
+{
+	long long res = 1;
+	for(long long i = 1; i <= a; i++)
+	{
+		res *= i;
+	}
+	return res;
 }
