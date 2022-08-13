@@ -258,31 +258,31 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     	imm[0] = imm[1] = 0;
     	sign = 0;
     }
-    else if (&src == &btn_plus && sign == 0)
+    else if (&src == &btn_plus && sign == 0 && pos == 0)
     {
     	updateExpression('+');
     	sign = '+';
     	pos = 1;
     }
-    else if (&src == &btn_sub && sign == 0)
+    else if (&src == &btn_sub && sign == 0 && pos == 0)
     {
     	updateExpression('-');
     	sign = '-';
     	pos = 1;
     }
-    else if (&src == &btn_mul && sign == 0)
+    else if (&src == &btn_mul && sign == 0 && pos == 0)
 	{
 		updateExpression('x');
 		sign = 'x';
 		pos = 1;
 	}
-    else if (&src == &btn_div && sign == 0)
+    else if (&src == &btn_div && sign == 0 && pos == 0)
 	{
 		updateExpression('/');
 		sign = '/';
 		pos = 1;
 	}
-    else if (&src == &btn_sin && sign == 0)
+    else if (&src == &btn_sin && sign == 0 && pos == -1)
     {
     	updateExpression('s');
     	updateExpression('i');
@@ -291,7 +291,7 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     	sign = 's';
     	pos = 0;
     }
-    else if (&src == &btn_cos && sign == 0)
+    else if (&src == &btn_cos && sign == 0 && pos == -1)
 	{
 		updateExpression('c');
 		updateExpression('o');
@@ -300,13 +300,13 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 		sign = 'c';
 		pos = 0;
 	}
-    else if (&src == &btn_exp && sign == 0)
+    else if (&src == &btn_exp && sign == 0 && pos == 0)
     {
     	updateExpression('^');
     	sign = '^';
     	pos = 1;
     }
-    else if (&src == &btn_fact && sign == 0)
+    else if (&src == &btn_fact && sign == 0 && pos == 0)
     {
     	updateExpression('!');
     	sign = '!';
