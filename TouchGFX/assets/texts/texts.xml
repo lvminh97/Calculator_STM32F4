@@ -4,8 +4,19 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="ResourceId4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB"></Translation>
+      </Text>
+      <Text Id="ResourceId3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">.</Translation>
+      </Text>
+      <Text Id="ResourceId2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">)</Translation>
+      </Text>
+      <Text Id="ResourceId1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">(</Translation>
+      </Text>
       <Text Id="__SingleUse_5C5K" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
@@ -76,12 +87,6 @@
         <Translation Language="GB">2</Translation>
       </Text>
       <Text Id="__SingleUse_BCIC" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">1</Translation>
-      </Text>
-      <Text Id="btn_2" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">2</Translation>
-      </Text>
-      <Text Id="btn_1" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">1</Translation>
       </Text>
     </TextGroup>

@@ -54,4 +54,4 @@ C:/TouchGFXProjects/Calculator/TouchGFX/generated/gui_generated/src/screen1_scre
 C:/TouchGFXProjects/Calculator/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp:413:11:long long int Screen1ViewBase::pow(long long int, long long int)	20	static
 C:/TouchGFXProjects/Calculator/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp:423:11:long long int Screen1ViewBase::fact(long long int)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/ClickListener.hpp:37:5:touchgfx::ClickListener<T>::ClickListener() [with T = touchgfx::ButtonWithLabel]	8	static
-C:/TouchGFXProjects/Calculator/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp:10:1:Screen1ViewBase::Screen1ViewBase()	160	static
+C:/TouchGFXProjects/Calculator/TouchGFX/generated/gui_generated/src/screen1_screen/Screen1ViewBase.cpp:10:1:Screen1ViewBase::Screen1ViewBase()	152	static

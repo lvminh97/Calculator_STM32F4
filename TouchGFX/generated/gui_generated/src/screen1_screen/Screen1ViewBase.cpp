@@ -256,32 +256,33 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     	textArea2Buffer[1] = 0;
     	textArea2.invalidate();
     	imm[0] = imm[1] = 0;
+    	sign = 0;
     }
-    else if (&src == &btn_plus)
+    else if (&src == &btn_plus && sign == 0)
     {
     	updateExpression('+');
     	sign = '+';
     	pos = 1;
     }
-    else if (&src == &btn_sub)
+    else if (&src == &btn_sub && sign == 0)
     {
     	updateExpression('-');
     	sign = '-';
     	pos = 1;
     }
-    else if (&src == &btn_mul)
+    else if (&src == &btn_mul && sign == 0)
 	{
 		updateExpression('x');
 		sign = 'x';
 		pos = 1;
 	}
-    else if (&src == &btn_div)
+    else if (&src == &btn_div && sign == 0)
 	{
 		updateExpression('/');
 		sign = '/';
 		pos = 1;
 	}
-    else if (&src == &btn_sin)
+    else if (&src == &btn_sin && sign == 0)
     {
     	updateExpression('s');
     	updateExpression('i');
@@ -290,7 +291,7 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     	sign = 's';
     	pos = 0;
     }
-    else if (&src == &btn_cos)
+    else if (&src == &btn_cos && sign == 0)
 	{
 		updateExpression('c');
 		updateExpression('o');
@@ -299,13 +300,13 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 		sign = 'c';
 		pos = 0;
 	}
-    else if (&src == &btn_exp)
+    else if (&src == &btn_exp && sign == 0)
     {
     	updateExpression('^');
     	sign = '^';
     	pos = 1;
     }
-    else if (&src == &btn_fact)
+    else if (&src == &btn_fact && sign == 0)
     {
     	updateExpression('!');
     	sign = '!';
@@ -317,13 +318,13 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     		switch(sign)
 			{
 			case 's':
-				updateExpression(']');
+				updateExpression(')');
 				rad = imm[0] / 180.0 * 3.14159;
 				fResult = sin(rad);
 				hasResult = 2;
 				break;
 			case 'c':
-				updateExpression(']');
+				updateExpression(')');
 				rad = imm[0] / 180.0 * 3.14159;
 				fResult = cos(rad);
 				hasResult = 2;
